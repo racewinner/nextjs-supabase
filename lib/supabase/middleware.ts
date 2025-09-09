@@ -24,6 +24,7 @@ export async function updateSession(request: NextRequest) {
           return request.cookies.getAll();
         },
         setAll(cookiesToSet) {
+          console.log('++++++++++++++++++++++++++')
           cookiesToSet.forEach(({ name, value }) =>
             request.cookies.set(name, value),
           );
@@ -47,11 +48,24 @@ export async function updateSession(request: NextRequest) {
   const { data } = await supabase.auth.getClaims();
   const user = data?.claims;
 
+  // Calc the remain-second to expire for token
+  if (user && user.exp) {
+    const exp = user.exp; // Unix timestamp in seconds
+    const nowSec = Math.floor(Date.now() / 1000); // current time in seconds
+  
+    const secondsLeft = exp - nowSec;
+    console.log('---------- Token Checking ----------')
+    console.log(`${ secondsLeft > 0 ? 'Not expired' : 'Expired token' }, Seconds until expiry:`, secondsLeft);
+    console.log('---------- -------------- ----------')
+  }
+
   if (
     request.nextUrl.pathname !== "/" &&
     !user &&
     !request.nextUrl.pathname.startsWith("/login") &&
-    !request.nextUrl.pathname.startsWith("/auth")
+    !request.nextUrl.pathname.startsWith("/auth") 
+    // !request.nextUrl.pathname.startsWith("/testclient") 
+
   ) {
     // no user, potentially respond by redirecting the user to the login page
     const url = request.nextUrl.clone();
