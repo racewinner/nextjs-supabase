@@ -78,11 +78,11 @@ export default () => {
       )
     })
   }
-  return <div className="bg-[#F3F3F9]">
+  return <div>
   <div className="mx-auto 
-                  max-w-sm px-4 py-16 bg-red-100
-                  md:max-w-3xl md:px-4 md:py-16 md:bg-red-300
-                  xl:max-w-7xl xl:px-4 xl:py-16 xl:bg-red-500
+                  max-w-sm px-4 py-16 
+                  md:max-w-3xl md:px-4 md:py-16 
+                  xl:max-w-7xl xl:px-4 xl:py-16 
                   ">
 
     <h2 className="sr-only">Products</h2>
