@@ -1,76 +1,14 @@
-'use client';
+
+import { createClient } from "@/lib/supabase/server";
 import { ProductCard } from "@/components/ui/product-card";
 
-export default () => {
+export default async () => {
 
-  const postList = [
-    {
-      title: 'Uduak Asuquo - Founder',
-      desc: 'The ultimate operating system for hotels',
-      price: 48
-    },
-    {
-      title: 'Uduak Asuquo - Founder',
-      desc: 'The ultimate operating system for hotels',
-      price: 48
-    },
-    {
-      title: 'Uduak Asuquo - Founder',
-      desc: 'The ultimate operating system for hotels',
-      price: 48
-    },
-    {
-      title: 'Uduak Asuquo - Founder',
-      desc: 'The ultimate operating system for hotels',
-      price: 48
-    },
-    {
-      title: 'Uduak Asuquo - Founder',
-      desc: 'The ultimate operating system for hotels',
-      price: 48
-    },
-    {
-      title: 'Uduak Asuquo - Founder',
-      desc: 'The ultimate operating system for hotels',
-      price: 48
-    },
-    {
-      title: 'Uduak Asuquo - Founder',
-      desc: 'The ultimate operating system for hotels',
-      price: 48
-    },
-    {
-      title: 'Uduak Asuquo - Founder',
-      desc: 'The ultimate operating system for hotels',
-      price: 48
-    },
-    {
-      title: 'Uduak Asuquo - Founder',
-      desc: 'The ultimate operating system for hotels',
-      price: 48
-    },
-    {
-      title: 'Uduak Asuquo - Founder',
-      desc: 'The ultimate operating system for hotels',
-      price: 48
-    },
-    {
-      title: 'Uduak Asuquo - Founder',
-      desc: 'The ultimate operating system for hotels',
-      price: 48
-    },
-    {
-      title: 'Uduak Asuquo - Founder',
-      desc: 'The ultimate operating system for hotels',
-      price: 48
-    },
-    {
-      title: 'Uduak Asuquo - Founder',
-      desc: 'The ultimate operating system for hotels',
-      price: 48
-    },
-   
-  ]
+  const supabase = await createClient();
+
+  const { data, error } = await supabase.from('blogs').select('*')
+  const postList = data
+
   const arrangePostList = () => {
     return postList && postList.map((itm, idx, arr) => {
       return (

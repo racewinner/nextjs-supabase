@@ -27,18 +27,25 @@ const ProductCard = ({itm, idx}: CardProps) => {
             alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." 
             className="aspect-[16/9] w-full object-cover rounded-tl-2xl rounded-tr-2xl group-hover:opacity-75"  />
       <ProductAvatar width={60} />
-      <div className='bg-white aspect-[16/9] w-full rounded-bl-2xl rounded-br-2xl px-[40px] pt-[40px]
-                      md:px-[40px] md:pt-[40px]
-                      xl:px-[40px] xl:pt-[40px]'>
-        <h3 className={`${inter.className} text-[#008ADD] 
-                        text-[14px] font-[500]`}>{itm.title}</h3>
-        <p  className={`${inter.className} text-black 
-                        text-[22px] font-[500] mt-[10px] leading-[1]
-                        md:mt-[10px] md:leading-[1.1]
-                        xl:mt-[15px] xl:leading-[1.2]`}>{itm.desc}</p>
-        <div className="flex justify-between items-center mt-[25px]
-                        md:mt-[25px]
-                        xl:mt-[30px]">
+      <div className='bg-white aspect-[16/9] w-full rounded-bl-2xl rounded-br-2xl px-[40px] py-[40px]
+                      md:px-[40px] md:py-[40px]
+                      xl:px-[40px] xl:py-[40px] 
+                      flex flex-col gap-[5px]'>
+        <div>
+          <h3 className={`${inter.className} text-[#008ADD] truncate
+                          text-[14px] font-[500]`}>{itm.title}</h3>
+        </div>
+        <div className="grow shrink">
+          <p  className={`${inter.className} text-black line-clamp-2
+                          text-[22px] font-[500] leading-[1]
+                          md:leading-[1.1]
+                          xl:leading-[1.2]
+                          `}>{itm.desc}</p>
+        </div>
+        
+        <div className="flex justify-between items-center 
+                        
+                        ">
           <Button className="bg-[#ff0000] rounded-full" asChild size="sm" variant={"outline"}>
             <Link href="/auth/login">Coperate</Link>
           </Button>
